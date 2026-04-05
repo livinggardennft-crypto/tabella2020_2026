@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Lancet – Sanzioni e Mortalità in Eccesso</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f4f6f9;
+      padding: 30px 20px;
+      color: #222;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: #1a3a5c;
+      color: white;
+      padding: 24px 28px;
+      border-radius: 10px 10px 0 0;
+    }
+
+    header .journal {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #a8c8e8;
+      margin-bottom: 6px;
+    }
+
+    header h1 {
+      font-size: 20px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    header .meta {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #cde;
+    }
+
+    header .doi {
+      margin-top: 6px;
+      font-size: 12px;
+      color: #a8c8e8;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      font-size: 14px;
+    }
+
+    thead tr {
+      background: #2c5f8a;
+      color: white;
+    }
+
+    thead th {
+      padding: 14px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+    }
+
+    thead th:first-child { width: 30%; }
+
+    tbody tr:nth-child(even) { background: #f0f5fb; }
+    tbody tr:nth-child(odd)  { background: #ffffff; }
+
+    tbody tr:hover { background: #ddeeff; transition: background 0.2s; }
+
+    tbody td {
+      padding: 13px 16px;
+      vertical-align: top;
+      border-bottom: 1px solid #dde4ee;
+      line-height: 1.5;
+    }
+
+    tbody td:first-child {
+      font-weight: 600;
+      color: #1a3a5c;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 9px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .badge-red    { background: #fde8e8; color: #c0392b; }
+    .badge-orange { background: #fef3e2; color: #d35400; }
+    .badge-blue   { background: #e8f0fb; color: #2c5f8a; }
+    .badge-green  { background: #e8f8ed; color: #27ae60; }
+    .badge-gray   { background: #f0f0f0; color: #555; }
+
+    .highlight {
+      font-size: 16px;
+      font-weight: 700;
+      color: #c0392b;
+    }
+
+    footer {
+      background: #1a3a5c;
+      color: #a8c8e8;
+      font-size: 12px;
+      padding: 14px 20px;
+      border-radius: 0 0 10px 10px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    footer a { color: #7ab8e8; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="journal">The Lancet Global Health · Agosto 2025 · Vol. 13 (8): e1358–e1366</div>
+    <h1>Effetti delle sanzioni internazionali sulla mortalità per fascia d'età:<br>un'analisi di dati panel cross-nazionale</h1>
+    <div class="meta">
+      <strong>Autori:</strong> Francisco Rodríguez (Univ. of Denver) · Silvio Rendón (CEPR) · Mark Weisbrot (CEPR)
+    </div>
+    <div class="doi">DOI: 10.1016/S2214-109X(25)00189-5 &nbsp;|&nbsp; Finanziamento: Center for Economic and Policy Research (CEPR)</div>
+  </header>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Parametro</th>
+        <th>Dato / Risultato</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>Rivista & tipo di studio</td>
+        <td><span class="badge badge-blue">The Lancet Global Health</span><br>Analisi panel cross-nazionale, peer-reviewed</td>
+        <td>Una delle riviste mediche più prestigiose al mondo. Corretto e aggiornato il 15 ottobre 2025.</td>
+      </tr>
+
+      <tr>
+        <td>Periodo analizzato</td>
+        <td>1971 – 2021 (50 anni)</td>
+        <td>Alcune analisi estese fino al 2022</td>
+      </tr>
+
+      <tr>
+        <td>Paesi nel campione</td>
+        <td>152 paesi</td>
+        <td>Dataset con tassi di mortalità per fascia d'età e episodi di sanzioni</td>
+      </tr>
+
+      <tr>
+        <td>Morti in eccesso annue<br>(stima centrale)</td>
+        <td><span class="highlight">~564.000 / anno</span></td>
+        <td>Intervallo di confidenza: 367.000 – 760.000. Comparabile alla mortalità da conflitti armati nello stesso periodo.</td>
+      </tr>
+
+      <tr>
+        <td>Totale cumulativo stimato<br>(50 anni)</td>
+        <td><span class="highlight">~38 milioni di morti</span></td>
+        <td>Cifra citata da John Mearsheimer (Univ. di Chicago). È la stima centrale aggregata sull'intero periodo.</td>
+      </tr>
+
+      <tr>
+        <td>Tipo di morte</td>
+        <td><span class="badge badge-orange">Mortalità indiretta</span></td>
+        <td>Non morti da guerra o bombardamenti. Effetti su salute, malnutrizione, carenza di farmaci e servizi sanitari.</td>
+      </tr>
+
+      <tr>
+        <td>Fascia d'età più colpita</td>
+        <td>Bambini sotto i 5 anni: <strong>51%</strong> del totale<br>Under 15 + over 60: <strong>77%</strong> del totale</td>
+        <td>I gruppi più vulnerabili della popolazione sono quelli che pagano il costo più elevato.</td>
+      </tr>
+
+      <tr>
+        <td>Sanzioni unilaterali<br>(USA / UE)</td>
+        <td><span class="badge badge-red">Effetto significativo e causale</span></td>
+        <td>Associazione causale robusta, statisticamente significativa. Le sanzioni USA spesso colpiscono direttamente l'economia del paese bersaglio.</td>
+      </tr>
+
+      <tr>
+        <td>Sanzioni multilaterali<br>(ONU)</td>
+        <td><span class="badge badge-green">Nessun effetto significativo</span></td>
+        <td>Lo studio non trova evidenza statistica di effetti sulla mortalità per le sanzioni ONU.</td>
+      </tr>
+
+      <tr>
+        <td>Metodi econometrici utilizzati</td>
+        <td>
+          • Entropy balancing<br>
+          • Test di causalità di Granger<br>
+          • Event-study representations<br>
+          • Variabili strumentali (IV)<br>
+          • Regressioni panel
+        </td>
+        <td>Metodi avanzati per isolare l'effetto causale delle sanzioni da altri fattori (reddito, conflitti, governance, ecc.).</td>
+      </tr>
+
+      <tr>
+        <td>Variabile dipendente</td>
+        <td>Tassi di mortalità per fascia d'età</td>
+        <td>Analisi specifica per età: mortalità infantile (0–5), giovanile (5–15), adulta, anziani (60–80+).</td>
+      </tr>
+
+      <tr>
+        <td>Effetto nel tempo<br>(mortalità infantile)</td>
+        <td>
+          Anni 1–3: +5,8 log points (IC 1,6–9,9)<br>
+          Anni 4–6: +8,1 log points (IC 3,0–13,3)<br>
+          Anni 7+: +10,0 log points (IC 3,2–16,9)
+        </td>
+        <td>L'effetto aumenta progressivamente nel tempo dopo l'imposizione delle sanzioni, coerente con un meccanismo causale.</td>
+      </tr>
+
+      <tr>
+        <td>Confronto con conflitti armati</td>
+        <td>Mortalità da sanzioni ≈ Mortalità da guerre<br>(vittime civili incluse)</td>
+        <td>Superiore al numero annuale di vittime da combattimento. "Sanzioni come arma di distruzione di massa economica" (Rodríguez, FT).</td>
+      </tr>
+
+      <tr>
+        <td>Natura della stima</td>
+        <td><span class="badge badge-gray">Stima statistica, non conteggio diretto</span></td>
+        <td>Solida metodologicamente ma soggetta a dibattito sulla causalità vs. cattiva gestione dei regimi sanzionati. Alcuni la considerano persino conservativa.</td>
+      </tr>
+
+      <tr>
+        <td>Dataset disponibile</td>
+        <td>Harvard Dataverse</td>
+        <td>Dati aperti e riproducibili: <em>dataverse.harvard.edu</em></td>
+      </tr>
+
+      <tr>
+        <td>Dichiarazione degli autori<br>(Weisbrot)</td>
+        <td colspan="2"><em>«È immorale e indifendibile che una forma di punizione collettiva così letale continui ad essere usata, e anzi sia stata costantemente espansa nel corso degli anni. Le sanzioni sono ampiamente fraintese come alternativa quasi non violenta alla forza militare.»</em></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <footer>
+    <span>Fonte: Rodríguez F., Rendón S., Weisbrot M. – <em>Lancet Glob Health</em> 2025; 13: e1358–66</span>
+    <span><a href="https://www.thelancet.com/journals/langlo/article/PIIS2214-109X(25)00189-5/fulltext" target="_blank">→ Articolo completo su thelancet.com</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
