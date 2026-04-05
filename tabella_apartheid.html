@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapporti sull'Apartheid – Timeline</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0e0f;
+    --surface: #161618;
+    --border: #2a2a2e;
+    --accent: #c8a96e;
+    --accent-dim: rgba(200,169,110,0.12);
+    --accent-glow: rgba(200,169,110,0.06);
+    --text: #e8e4dc;
+    --text-muted: #888880;
+    --text-dim: #555550;
+    --tag-il: #2d4a3e;
+    --tag-il-text: #6abf8e;
+    --tag-intl: #2a3a5a;
+    --tag-intl-text: #7aabdf;
+    --tag-un: #4a2a3a;
+    --tag-un-text: #df7aab;
+    --tag-conj: #3a3a2a;
+    --tag-conj-text: #c8bf6e;
+    --tag-court: #3a2a4a;
+    --tag-court-text: #b07adf;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'IBM Plex Sans', sans-serif; font-weight: 300; min-height: 100vh; padding: 48px 24px; }
+  .page-wrapper { max-width: 1320px; margin: 0 auto; }
+  .header { margin-bottom: 52px; border-left: 3px solid var(--accent); padding-left: 24px; }
+  .header-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; opacity: 0.8; }
+  .header h1 { font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 44px); font-weight: 900; line-height: 1.1; color: var(--text); letter-spacing: -0.02em; margin-bottom: 12px; }
+  .header h1 em { font-style: italic; color: var(--accent); }
+  .header p { font-size: 13px; color: var(--text-muted); line-height: 1.6; max-width: 600px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 32px; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--text-muted); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .year-row td { background: #111113; padding: 8px 20px 8px 12px; border-bottom: 1px solid var(--border); }
+  .year-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--accent); opacity: 0.7; }
+  .table-container { overflow-x: auto; border: 1px solid var(--border); border-radius: 2px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; line-height: 1.55; }
+  thead tr { background: var(--surface); border-bottom: 1px solid var(--border); }
+  th { font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); padding: 14px 20px; text-align: left; white-space: nowrap; border-right: 1px solid var(--border); position: sticky; top: 0; background: var(--surface); z-index: 2; }
+  th:last-child { border-right: none; }
+  th .th-num { display: inline-block; color: var(--accent); margin-right: 6px; opacity: 0.6; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.2s; cursor: default; }
+  tbody tr:hover:not(.year-row) { background: var(--accent-glow); }
+  tbody tr:last-child { border-bottom: none; }
+  td { padding: 18px 20px; vertical-align: top; border-right: 1px solid var(--border); }
+  td:last-child { border-right: none; }
+  .col-index { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--text-dim); width: 36px; text-align: center; padding: 18px 12px; }
+  .col-org { min-width: 180px; max-width: 220px; }
+  .org-name { font-weight: 500; color: var(--text); font-size: 13.5px; margin-bottom: 6px; font-family: 'IBM Plex Sans', sans-serif; }
+  .tag { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 1px; font-weight: 500; }
+  .tag-il { background: var(--tag-il); color: var(--tag-il-text); }
+  .tag-intl { background: var(--tag-intl); color: var(--tag-intl-text); }
+  .tag-un { background: var(--tag-un); color: var(--tag-un-text); }
+  .tag-conj { background: var(--tag-conj); color: var(--tag-conj-text); }
+  .tag-court { background: var(--tag-court); color: var(--tag-court-text); }
+  .col-date { white-space: nowrap; min-width: 120px; }
+  .date-main { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--accent); font-weight: 500; }
+  .col-report { min-width: 260px; max-width: 360px; }
+  .report-title { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 400; font-style: italic; color: #c8c4bc; line-height: 1.5; }
+  .col-scope { min-width: 170px; max-width: 210px; }
+  .scope-pill { display: inline-block; font-size: 11px; color: var(--text-muted); border: 1px solid var(--border); padding: 3px 9px; border-radius: 1px; line-height: 1.4; }
+  .col-notes { min-width: 240px; max-width: 320px; }
+  .note-text { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+  .note-first { display: inline-block; background: var(--accent-dim); color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; padding: 1px 6px; margin-bottom: 6px; border: 1px solid rgba(200,169,110,0.25); }
+  .note-landmark { display: inline-block; background: rgba(176,122,223,0.12); color: var(--tag-court-text); font-family: 'IBM Plex Mono', monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; padding: 1px 6px; margin-bottom: 6px; border: 1px solid rgba(176,122,223,0.25); }
+  .stripe-2020 { border-left: 3px solid #4a7a6a; }
+  .stripe-2021 { border-left: 3px solid #5a6a8a; }
+  .stripe-2022 { border-left: 3px solid #7a5a8a; }
+  .stripe-2023 { border-left: 3px solid #7a6a4a; }
+  .stripe-2024a { border-left: 3px solid #8a4a4a; }
+  .stripe-2024b { border-left: 3px solid #6a4a8a; }
+  .stripe-2025 { border-left: 3px solid #4a6a8a; }
+  .stripe-2026 { border-left: 3px solid #8a7a4a; }
+  .footer { margin-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--text-dim); padding-top: 20px; border-top: 1px solid var(--border); }
+  .count-badge { background: var(--accent-dim); color: var(--accent); padding: 4px 12px; border: 1px solid rgba(200,169,110,0.2); }
+  @media (max-width: 768px) { body { padding: 24px 12px; } td, th { padding: 12px 12px; } .col-report { min-width: 200px; } .col-notes { min-width: 180px; } }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <header class="header">
+    <div class="header-label">Documentazione internazionale · 2020–2026</div>
+    <h1>Rapporti sull'<em>Apartheid</em><br>Israeliano-Palestinese</h1>
+    <p>Cronologia delle principali dichiarazioni, rapporti legali e risoluzioni di ONG, relatori ONU e organi giurisdizionali internazionali che documentano il regime di apartheid nei confronti del popolo palestinese.</p>
+  </header>
+
+  <div class="legend">
+    <div class="legend-item"><span class="dot" style="background:var(--tag-il-text)"></span> ONG Israeliana</div>
+    <div class="legend-item"><span class="dot" style="background:var(--tag-intl-text)"></span> ONG Internazionale</div>
+    <div class="legend-item"><span class="dot" style="background:var(--tag-un-text)"></span> Relatore ONU</div>
+    <div class="legend-item"><span class="dot" style="background:var(--tag-conj-text)"></span> Dichiarazione Congiunta</div>
+    <div class="legend-item"><span class="dot" style="background:var(--tag-court-text)"></span> Organo Giurisdizionale</div>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th><span class="th-num">01</span>Organizzazione</th>
+          <th><span class="th-num">02</span>Data</th>
+          <th><span class="th-num">03</span>Rapporto / Dichiarazione</th>
+          <th><span class="th-num">04</span>Ambito</th>
+          <th><span class="th-num">05</span>Note principali</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- ══ 2020 ══ -->
+        <tr class="year-row"><td colspan="6"><span class="year-label">── 2020 ─────────────────────────────────</span></td></tr>
+
+        <tr class="stripe-2020">
+          <td class="col-index">01</td>
+          <td class="col-org"><div class="org-name">Yesh Din</div><span class="tag tag-il">ONG israeliana</span></td>
+          <td class="col-date"><div class="date-main">9 lug 2020</div></td>
+          <td class="col-report"><div class="report-title">The Israeli Occupation of the West Bank and the Crime of Apartheid (opinione legale di Michael Sfard)</div></td>
+          <td class="col-scope"><span class="scope-pill">Solo Cisgiordania</span></td>
+          <td class="col-notes"><span class="note-first">Prima storica</span><div class="note-text">Prima ONG israeliana a usare formalmente il termine «crimine di apartheid».</div></td>
+        </tr>
+
+        <!-- ══ 2021 ══ -->
+        <tr class="year-row"><td colspan="6"><span class="year-label">── 2021 ─────────────────────────────────</span></td></tr>
+
+        <tr class="stripe-2021">
+          <td class="col-index">02</td>
+          <td class="col-org"><div class="org-name">B'Tselem</div><span class="tag tag-il">ONG israeliana</span></td>
+          <td class="col-date"><div class="date-main">12 gen 2021</div></td>
+          <td class="col-report"><div class="report-title">A Regime of Jewish Supremacy from the Jordan River to the Mediterranean Sea: This Is Apartheid</div></td>
+          <td class="col-scope"><span class="scope-pill">Giordano → Mediterraneo<br>(Israele + OPT)</span></td>
+          <td class="col-notes"><span class="note-first">Prima storica</span><div class="note-text">Prima grande ONG israeliana ad accusare l'intero regime, non solo i territori occupati.</div></td>
+        </tr>
+
+        <tr class="stripe-2021">
+          <td class="col-index">03</td>
+          <td class="col-org"><div class="org-name">Human Rights Watch</div><span class="tag tag-intl">ONG internazionale</span></td>
+          <td class="col-date"><div class="date-main">27 apr 2021</div></td>
+          <td class="col-report"><div class="report-title">A Threshold Crossed: Israeli Authorities and the Crimes of Apartheid and Persecution</div></td>
+          <td class="col-scope"><span class="scope-pill">Israele + Territori Occupati</span></td>
+          <td class="col-notes"><div class="note-text">Primo grande rapporto internazionale dopo B'Tselem; documenta la persecuzione sistematica della popolazione palestinese.</div></td>
+        </tr>
+
+        <!-- ══ 2022 ══ -->
+        <tr class="year-row"><td colspan="6"><span class="year-label">── 2022 ─────────────────────────────────</span></td></tr>
+
+        <tr class="stripe-2022">
+          <td class="col-index">04</td>
+          <td class="col-org"><div class="org-name">Amnesty International</div><span class="tag tag-intl">ONG internazionale</span></td>
+          <td class="col-date"><div class="date-main">1 feb 2022</div></td>
+          <td class="col-report"><div class="report-title">Israel's Apartheid Against Palestinians: Cruel System of Domination and a Crime Against Humanity</div></td>
+          <td class="col-scope"><span class="scope-pill">Dal 1948 a oggi<br>(Israele + OPT + rifugiati)</span></td>
+          <td class="col-notes"><div class="note-text">Rapporto più ampio (278 pp.); accusa sistematica a partire dal 1948, compresi i rifugiati palestinesi.</div></td>
+        </tr>
+
+        <tr class="stripe-2022">
+          <td class="col-index">05</td>
+          <td class="col-org"><div class="org-name">Michael Lynk</div><span class="tag tag-un">Relatore ONU</span></td>
+          <td class="col-date"><div class="date-main">25 mar 2022</div></td>
+          <td class="col-report"><div class="report-title">Rapporto al Consiglio Diritti Umani dell'ONU</div></td>
+          <td class="col-scope"><span class="scope-pill">Territori Occupati<br>(55 anni di occupazione)</span></td>
+          <td class="col-notes"><span class="note-first">Prima storica</span><div class="note-text">Primo Relatore Speciale ONU a dichiarare esplicitamente «apartheid» in un rapporto ufficiale.</div></td>
+        </tr>
+
+        <tr class="stripe-2022">
+          <td class="col-index">06</td>
+          <td class="col-org"><div class="org-name">Francesca Albanese</div><span class="tag tag-un">Relatore ONU</span></td>
+          <td class="col-date"><div class="date-main">Ott 2022</div></td>
+          <td class="col-report"><div class="report-title">Primo rapporto annuale (A/77/356) — «There is no other way to define the regime…other than an open-air prison»</div></td>
+          <td class="col-scope"><span class="scope-pill">Territori Occupati<br>+ regime complessivo</span></td>
+          <td class="col-notes"><div class="note-text">Primo rapporto da relatrice; definisce la situazione come «regime di apartheid coloniale-settler» e raccomanda un piano ONU per porre fine all'occupazione. Da maggio 2022, primo mandato (poi confermato fino al 2028).</div></td>
+        </tr>
+
+        <tr class="stripe-2022">
+          <td class="col-index">07</td>
+          <td class="col-org"><div class="org-name">20+ ONG israeliane</div><span class="tag tag-conj">Congiunta</span></td>
+          <td class="col-date"><div class="date-main">Dic 2022</div></td>
+          <td class="col-report"><div class="report-title">Dichiarazione congiunta dopo la formazione del governo Netanyahu–Ben Gvir</div></td>
+          <td class="col-scope"><span class="scope-pill">Territori Occupati</span></td>
+          <td class="col-notes"><div class="note-text">«L'occupazione e l'apartheid sono ormai legge di fatto» — risposta alla formazione del governo di estrema destra.</div></td>
+        </tr>
+
+        <!-- ══ 2023 ══ -->
+        <tr class="year-row"><td colspan="6"><span class="year-label">── 2023 ─────────────────────────────────</span></td></tr>
+
+        <tr class="stripe-2023">
+          <td class="col-index">08</td>
+          <td class="col-org"><div class="org-name">Francesca Albanese</div><span class="tag tag-un">Relatore ONU</span></td>
+          <td class="col-date"><div class="date-main">2023</div></td>
+          <td class="col-report"><div class="report-title">Rapporto annuale A/78/545 — Occupied Palestinian Territory</div></td>
+          <td class="col-scope"><span class="scope-pill">Territori Occupati<br>+ regime complessivo</span></td>
+          <td class="col-notes"><div class="note-text">Ribadisce la qualificazione di «regime di apartheid coloniale-settler»; denuncia l'impunità sistemica di Israele rispetto al diritto internazionale.</div></td>
+        </tr>
+
+        <tr class="stripe-2023">
+          <td class="col-index">09</td>
+          <td class="col-org"><div class="org-name">17 ONG israeliane</div><span class="tag tag-conj">Congiunta</span></td>
+          <td class="col-date"><div class="date-main">Lug 2023</div></td>
+          <td class="col-report"><div class="report-title">State of the Occupation – Year 56 (rapporto congiunto)</div></td>
+          <td class="col-scope"><span class="scope-pill">Cisgiordania</span></td>
+          <td class="col-notes"><div class="note-text">Tra i firmatari: B'Tselem, Yesh Din, Breaking the Silence. Dopo 56 anni, le azioni soddisfano i criteri legali di apartheid.</div></td>
+        </tr>
+
+        <!-- ══ 2024 ══ -->
+        <tr class="year-row"><td colspan="6"><span class="year-label">── 2024 ─────────────────────────────────</span></td></tr>
+
+        <tr class="stripe-2024a">
+          <td class="col-index">10</td>
+          <td class="col-org"><div class="org-name">Francesca Albanese</div><span class="tag tag-un">Relatore ONU</span></td>
+          <td class="col-date"><div class="date-main">25 mar 2024</div></td>
+          <td class="col-report"><div class="report-title">Anatomy of a Genocide — Rapporto al Consiglio Diritti Umani ONU (A/HRC/55/73)</div></td>
+          <td class="col-scope"><span class="scope-pill">Gaza + Territori Occupati</span></td>
+          <td class="col-notes"><div class="note-text">Conclude che vi sono «fondati motivi per ritenere raggiunta la soglia del genocidio» a Gaza. Contestualizza l'offensiva post-7 ottobre nell'apartheid strutturale di lungo periodo. Chiede embargo sulle armi e sanzioni internazionali.</div></td>
+        </tr>
+
+        <tr class="stripe-2024b">
+          <td class="col-index">11</td>
+          <td class="col-org"><div class="org-name">Corte Internazionale di Giustizia (CIG / ICJ)</div><span class="tag tag-court">Organo giurisdizionale</span></td>
+          <td class="col-date"><div class="date-main">19 lug 2024</div></td>
+          <td class="col-report"><div class="report-title">Parere Consultivo — Conseguenze giuridiche delle politiche e pratiche di Israele nei Territori Palestinesi Occupati, inclusa Gerusalemme Est</div></td>
+          <td class="col-scope"><span class="scope-pill">Cisgiordania + Gaza<br>+ Gerusalemme Est</span></td>
+          <td class="col-notes">
+            <span class="note-landmark">Storico – Prima volta CIG</span>
+            <div class="note-text">Prima volta in cui la CIG dichiara illegale l'intera presenza israeliana negli OPT. Trova che le leggi israeliane violano l'art. 3 della CERD (segregazione razziale e apartheid). Tutti gli Stati sono obbligati a non riconoscere l'occupazione. Il 18 sett. 2024, l'UNGA approva una risoluzione (124 favorevoli, 43 astenuti, 14 contrari) per dare attuazione al parere, chiedendo il ritiro israeliano entro un anno.</div>
+          </td>
+        </tr>
+
+        <tr class="stripe-2024a">
+          <td class="col-index">12</td>
+          <td class="col-org"><div class="org-name">Francesca Albanese</div><span class="tag tag-un">Relatore ONU</span></td>
+          <td class="col-date"><div class="date-main">30 ott 2024</div></td>
+          <td class="col-report"><div class="report-title">Genocide as Colonial Erasure — Rapporto alla 79ª Sessione UNGA (A/79/…)</div></td>
+          <td class="col-scope"><span class="scope-pill">Gaza + Cisgiordania<br>+ regime complessivo</span></td>
+          <td class="col-notes"><div class="note-text">Inquadra il genocidio post-7 ottobre dentro un progetto coloniale-settler decennale. Richiama il Parere CIG del 19 luglio 2024 che ha riconosciuto l'apartheid. Chiede il riconoscimento formale di Israele come «Stato apartheid» e la riattivazione del Comitato Speciale ONU contro l'Apartheid. Chiede sospensione del seggio ONU di Israele.</div></td>
+        </tr>
+
+        <!-- ══ 2025 ══ -->
+        <tr class="year-row"><td colspan="6"><span class="year-label">── 2025 ─────────────────────────────────</span></td></tr>
+
+        <tr class="stripe-2025">
+          <td class="col-index">13</td>
+          <td class="col-org"><div class="org-name">Francesca Albanese</div><span class="tag tag-un">Relatore ONU</span></td>
+          <td class="col-date"><div class="date-main">30 giu 2025</div></td>
+          <td class="col-report"><div class="report-title">From Economy of Occupation to Economy of Genocide — Rapporto alla 59ª Sessione del Consiglio Diritti Umani ONU</div></td>
+          <td class="col-scope"><span class="scope-pill">OPT + Israele<br>(imprese globali)</span></td>
+          <td class="col-notes"><div class="note-text">Documenta la complicità economica di circa 1.000 aziende — cita 48 tra cui Google, Amazon, Microsoft, Lockheed Martin, Leonardo, BlackRock, Elbit Systems — nell'«economia dell'occupazione, dell'apartheid e ora del genocidio». Chiede responsabilità penale e civile per dirigenti. Albanese è confermata nel mandato fino al 2028. Gli USA (amministrazione Trump) la sanzionano personalmente a luglio 2025.</div></td>
+        </tr>
+
+        <!-- ══ 2026 ══ -->
+        <tr class="year-row"><td colspan="6"><span class="year-label">── 2026 ─────────────────────────────────</span></td></tr>
+
+        <tr class="stripe-2026">
+          <td class="col-index">14</td>
+          <td class="col-org"><div class="org-name">Francesca Albanese</div><span class="tag tag-un">Relatore ONU</span></td>
+          <td class="col-date"><div class="date-main">23 mar 2026</div></td>
+          <td class="col-report"><div class="report-title">Torture and Genocide — Rapporto alla 59ª Sessione del Consiglio Diritti Umani ONU</div></td>
+          <td class="col-scope"><span class="scope-pill">OPT + detenzioni<br>+ regime complessivo</span></td>
+          <td class="col-notes"><div class="note-text">Esamina l'uso sistematico della tortura come strumento del genocidio coloniale-settler, sia in carcere che fuori, creando un «ambiente torturante» volto all'annientamento dei palestinesi. Afferma che «la tortura è diventata politica di Stato in Israele». Chiede indagini della CPI e responsabilità collettiva degli Stati. Mandato in corso fino al 2028.</div></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="footer">
+    <div><span class="count-badge">14 documenti · 2020–2026</span></div>
+    <div>ONG israeliane · ONG internazionali · Relatori Speciali ONU · Corte Internazionale di Giustizia</div>
+  </footer>
+
+</div>
+</body>
+</html>
