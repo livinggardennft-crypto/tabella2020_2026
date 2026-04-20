@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCARS EMERGENCY QR GENERATOR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- QRCode.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body class="lcars-bg">
+    <div class="lcars-app-container">
+        <!-- Header / Top Arch -->
+        <header class="lcars-header">
+            <div class="lcars-elbow-top-left"></div>
+            <div class="lcars-top-bar">
+                <div class="lcars-title">LCARS EMERGENCY QR // SYSTEM 47</div>
+                <div class="lcars-stardate">STARDATE: <span id="stardate"></span></div>
+            </div>
+        </header>
+
+        <main class="lcars-main">
+            <!-- Left Sidebar Navigation -->
+            <nav class="lcars-sidebar">
+                <div class="lcars-bar gold"><span>02-837</span></div>
+                <div class="lcars-bar blue"><span>47-921</span></div>
+                <div class="lcars-bar red"><span>EMER-SIG</span></div>
+                <div class="lcars-bar violet"><span>SEC-01</span></div>
+                <div class="lcars-bar orange"><span>33-12</span></div>
+                <div class="lcars-elbow-bottom-left">
+                    <div class="lcars-sidebar-graph">
+                        <div class="scan-grid"></div>
+                        <div class="data-stream">
+                            <div class="data-block lcars-gold"></div>
+                            <div class="data-block lcars-blue"></div>
+                            <div class="data-block lcars-red"></div>
+                            <div class="data-block lcars-orange"></div>
+                            <div class="data-block lcars-violet"></div>
+                        </div>
+                        <div class="freq-analyzer">
+                            <div class="freq-bar lcars-blue" style="--h: 40%"></div>
+                            <div class="freq-bar lcars-gold" style="--h: 70%"></div>
+                            <div class="freq-bar lcars-red" style="--h: 50%"></div>
+                            <div class="freq-bar lcars-orange" style="--h: 90%"></div>
+                            <div class="freq-bar lcars-violet" style="--h: 30%"></div>
+                        </div>
+                        <div class="status-indicator">
+                            <div class="pulse-dot"></div>
+                            <span class="pulse-text">ACTIVE SCAN</span>
+                        </div>
+                    </div>
+                    <div class="lcars-sidebar-tag">SYS-LN 47</div>
+                </div>
+            </nav>
+
+            <!-- Content Area -->
+            <section class="lcars-content">
+                <div class="lcars-panel panel-data">
+                    <h2 class="lcars-panel-title">INPUT DATA SEQUENCE</h2>
+                    <form id="qr-form" class="lcars-form">
+                        <div class="input-group">
+                            <label>FULL NAME</label>
+                            <input type="text" id="name" placeholder="SURNAME, NAME" required>
+                        </div>
+                        <div class="input-group">
+                            <label>COMM FREQUENCY (PHONE)</label>
+                            <input type="tel" id="phone" placeholder="+00 000 0000000" pattern="[+]?[0-9\s-]{7,15}" title="ENTER A VALID PHONE NUMBER (MIN 7 DIGITS)" required>
+                        </div>
+                        <div class="input-group">
+                            <label>SUBSP_ADDRESS (EMAIL)</label>
+                            <input type="email" id="email" placeholder="USER@FEDERATION.SOL" required>
+                        </div>
+                        <div class="input-group">
+                            <label>STREET ADDRESS</label>
+                            <input type="text" id="address" placeholder="123 MAIN ST / DECK 7" required>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>CITY / SECTOR</label>
+                                <input type="text" id="city" placeholder="SAN FRANCISCO" required>
+                            </div>
+                            <div class="input-group">
+                                <label>P_CODE (CAP)</label>
+                                <input type="text" id="zip" placeholder="00000" pattern="[0-9]{5}" title="ENTER 5 DIGIT POSTAL CODE" required>
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>PROVINCE</label>
+                                <input type="text" id="province" placeholder="SF" required>
+                            </div>
+                            <div class="input-group">
+                                <label>STATE</label>
+                                <input type="text" id="state" placeholder="UNITED EARTH" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>EMERGENCY NOTE</label>
+                            <textarea id="note" rows="3" placeholder="MEDICAL INFO / DESTINATION"></textarea>
+                        </div>
+                        
+                        <div class="button-container">
+                            <button type="button" id="generate-btn" class="lcars-btn bg-gold">GENERATE QR</button>
+                            <button type="button" id="print-btn" class="lcars-btn bg-blue" disabled>PRINT TERMINAL</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="lcars-panel panel-output">
+                    <h2 class="lcars-panel-title">QR OUTPUT BUFFER</h2>
+                    <div id="qrcode-wrapper">
+                        <div id="qrcode-container">
+                            <div id="qrcode"></div>
+                            <div class="scan-line"></div>
+                            <!-- Luggage Icon Overlay (Custom Image) -->
+                            <div class="qr-icon-overlay">
+                                <img src="icon_bag.png" alt="Luggage Symbol" id="qr-custom-icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-display">
+                        <div class="binary-scroller" id="binary-scroller"></div>
+                        <div class="status-msg" id="status-msg">SYSTEM READY...</div>
+                        
+                        <!-- Sinusoidal Wave Canvas -->
+                        <div class="wave-container">
+                            <canvas id="wave-canvas"></canvas>
+                            <div class="wave-overlay-text">BIO-SCAN SENSOR DATA: ACTIVE</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="lcars-footer">
+            <div class="lcars-bar-bottom">
+                <span>LCARS ACCESS // AUTHORIZED PERSONNEL ONLY</span>
+            </div>
+        </footer >
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
